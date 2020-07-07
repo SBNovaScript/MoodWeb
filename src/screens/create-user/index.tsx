@@ -3,7 +3,7 @@ import {Button, Grid, Snackbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import FormControlWithLabels from "../../components/form-control-with-labels";
 import axios from 'axios';
-import {ADD_USER_SUCCESS} from "../../lib/frontend-constants/server-codes";
+import {ADD_USER_SUCCESS, SUCCESS_STATUS} from "../../lib/frontend-constants/server-codes";
 import {Alert} from "@material-ui/lab";
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +40,7 @@ const CreateUser: React.FunctionComponent = () => {
 
         axios.post('http://localhost:5000/users/add', newUser)
             .then(res => {
-                if (res.data === ADD_USER_SUCCESS)
+                if (res.status === SUCCESS_STATUS)
                 {
                     setSuccessSnackbarOpen(true);
                 }
@@ -81,7 +81,7 @@ const CreateUser: React.FunctionComponent = () => {
             </Snackbar>
             <Snackbar open={errorSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
                 <Alert onClose={handleSnackbarClose} severity={'error'}>
-                    {`User ${username} already exists.`}
+                    {`User ${username} could not be created.`}
                 </Alert>
             </Snackbar>
         </form>
