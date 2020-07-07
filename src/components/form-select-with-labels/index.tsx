@@ -1,5 +1,5 @@
 import React from "react";
-import {FormControl, FormHelperText, Input, InputLabel, MenuItem, Select} from "@material-ui/core";
+import {FormControl, FormHelperText, InputLabel, Select} from "@material-ui/core";
 
 interface props {
     innerLabel: string,

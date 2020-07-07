@@ -12,7 +12,7 @@ const rateLimit = require("express-rate-limit");
 
 const limiter = rateLimit({
     windowMs: 30 * 1000, // 30 seconds
-    max: 1 // limit each IP to 10 requests per windowMs
+    max: 10 // limit each IP to 10 requests per windowMs
 });
 
 // Setting up middleware

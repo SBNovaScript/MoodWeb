@@ -1,4 +1,4 @@
-import React, {FormEvent, SyntheticEvent, useEffect, useState} from "react";
+import React, {SyntheticEvent, useCallback, useEffect, useState} from "react";
 import {Button, Grid, MenuItem, Snackbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import FormControlWithLabels from "../../components/form-control-with-labels";
@@ -28,13 +28,13 @@ const CreateMood: React.FunctionComponent = () => {
 
     const [submitDisabled, setSubmitDisabled] = useState(true);
 
-    const enableSubmitOnFormCompletion = () => {
-        setSubmitDisabled(
-            username.length < 4 ||
-            mood.length < 4 ||
-            details.length < 4
-        );
-    }
+    const enableSubmitOnFormCompletion = useCallback(() => {
+            setSubmitDisabled(
+                username.length < 4 ||
+                mood.length < 4 ||
+                details.length < 4
+            )
+    }, [details.length, mood.length, username.length]);
 
     useEffect(() => {
         enableSubmitOnFormCompletion();

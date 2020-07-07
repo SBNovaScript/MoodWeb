@@ -6,3 +6,5 @@ export const UNAUTHORIZED_STATUS = 401;
 
 export const MAX_RATING = 10;
 export const MIN_RATING = 1;
+
+export const SNACKBAR_AUTO_HIDE_DURATION = 6000;

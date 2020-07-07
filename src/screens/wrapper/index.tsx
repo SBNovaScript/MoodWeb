@@ -9,18 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Home from "../home/index";
 import Moods from "../moods";
-import {makeStyles} from "@material-ui/core/styles";
 import {Grid} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
-    buttonText: {
-        color: theme.palette.common.white
-    }
-}))
-
 const Wrapper: React.FunctionComponent = () => {
-
-    const classes = useStyles();
 
     const Header: React.FunctionComponent = () => (
         <AppBar position={'static'} elevation={0}>
