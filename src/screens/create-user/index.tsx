@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import {Button, Grid, Typography} from "@material-ui/core";
+import React, {FormEvent, SyntheticEvent, useState} from "react";
+import {Button, Grid, Snackbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import FormControlWithLabels from "../../components/form-control-with-labels";
 import axios from 'axios';
 import {ADD_USER_SUCCESS} from "../../lib/frontend-constants/server-codes";
+import {Alert} from "@material-ui/lab";
 
 const useStyles = makeStyles(theme => ({
     form: {
@@ -14,27 +15,38 @@ const useStyles = makeStyles(theme => ({
 const CreateUser: React.FunctionComponent = () => {
     const classes = useStyles();
     const [username, setUsername] = useState("");
+    const [successSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
+    const [errorSnackbarOpen, setErrorSnackbarOpen] = useState(false);
 
-    const handleUsernameChange = (e: any) => {
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);
     }
 
-    const onSubmit = (e: any) => {
+    const closeAllSnackbars = () => {
+        setSuccessSnackbarOpen(false);
+        setErrorSnackbarOpen(false);
+    }
+
+    const handleSnackbarClose = (event: SyntheticEvent<Element, Event>) => {
+        closeAllSnackbars();
+    }
+
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const newUser = {
             username
         };
 
-        console.log(newUser);
-
         axios.post('http://localhost:5000/users/add', newUser)
             .then(res => {
                 if (res.data === ADD_USER_SUCCESS)
                 {
-                    console.log('WOOO');
+                    setSuccessSnackbarOpen(true);
                 }
-            });
+            }).catch(err => {
+            setErrorSnackbarOpen(true);
+        });
     }
 
     const HeaderSection: React.FunctionComponent = () => (
@@ -62,7 +74,16 @@ const CreateUser: React.FunctionComponent = () => {
                     {'Submit'}
                 </Button>
             </Grid>
-
+            <Snackbar open={successSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                <Alert onClose={handleSnackbarClose} severity={'success'}>
+                    {`User ${username} created successfully!`}
+                </Alert>
+            </Snackbar>
+            <Snackbar open={errorSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                <Alert onClose={handleSnackbarClose} severity={'error'}>
+                    {`User ${username} already exists.`}
+                </Alert>
+            </Snackbar>
         </form>
     );
 }

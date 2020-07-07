@@ -1,10 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## MoodWeb
+Welcome to MoodWeb, a social network for sharing your moods!
 
-## Available Scripts
-
-In the project directory, you can run:
+### Frontend
+To start the React frontend, navigate to the main directory and use the command:
 
 ### `npm start`
+
+### Backend
+To start the Node.js backend, navigate to the /backend directory and use the command:
+
+### `nodemon project`
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

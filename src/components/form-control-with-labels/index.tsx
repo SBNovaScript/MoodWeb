@@ -5,7 +5,7 @@ interface props {
     innerLabel: string,
     underLabel: string,
     aria: string,
-    onChange: (e: any) => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const FormControlWithLabels: React.FunctionComponent<props> = (inputProps: props) => {

@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Home from "../home/index";
 import Moods from "../moods";
 import {makeStyles} from "@material-ui/core/styles";
+import {Grid} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     buttonText: {
@@ -24,15 +25,17 @@ const Wrapper: React.FunctionComponent = () => {
     const Header: React.FunctionComponent = () => (
         <AppBar position={'static'} elevation={0}>
             <Toolbar>
-                <Button component={Link} to={'/'}>
-                    <Typography variant={'h5'}>
-                        {'MoodWeb'}
-                    </Typography>
-                </Button>
-                <Button component={Link} to={'/'}>Home</Button>
-                <Button component={Link} to={'/moods'}>Moods</Button>
-                <Button component={Link} to={'/create'}>Log Mood</Button>
-                <Button component={Link} to={'/user'}>Create User</Button>
+                <Grid container direction={'row'}>
+                    <Button component={Link} to={'/'}>
+                        <Typography variant={'h5'}>
+                            {'MoodWeb'}
+                        </Typography>
+                    </Button>
+                    <Button component={Link} to={'/'}>Home</Button>
+                    <Button component={Link} to={'/moods'}>Moods</Button>
+                    <Button component={Link} to={'/create'}>Log Mood</Button>
+                    <Button component={Link} to={'/user'}>Create User</Button>
+                </Grid>
             </Toolbar>
         </AppBar>
     );
