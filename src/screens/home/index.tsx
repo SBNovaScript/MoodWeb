@@ -14,6 +14,9 @@ const Home: React.FunctionComponent = () => (
         <p>
             {'Welcome to MoodWeb, the social network for sharing your moods.'}
         </p>
+        <p>
+            {'To start, first create an account, then log your first mood!'}
+        </p>
     </Grid>
 );
 
