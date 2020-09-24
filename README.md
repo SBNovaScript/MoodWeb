@@ -1,5 +1,5 @@
 ## MoodWeb
-Welcome to MoodWeb, a social network for sharing your moods!
+Welcome to MoodWeb, a social network for sharing your moods! Tell the world how you are feeling, and support others.
 
 ### Frontend
 To start the React frontend, navigate to the main directory and use the command:
